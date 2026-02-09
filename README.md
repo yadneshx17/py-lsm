@@ -1,4 +1,4 @@
-# py-lsm 🗄️
+# py-lsm
 
 A Toy implementation of **LSM-tree** (Log-Structured Merge-Tree) - a high-performance key-value storage engine used in databases like LevelDB, RocksDB, and Apache Cassandra.
 
