@@ -8,15 +8,15 @@ from sortedcontainers import SortedDict
 
 from sstable.writer import SSTableWriter
 
-from .wal import WAL
-from .memtable import MemTable
-from .sstable import SSTableReader
+from wal import WAL
+from memtable import MemTable
+from sstable import SSTableReader
 
 
 class LSMEngine:
     """A simple implementation of Log-Structured Merge-Tree (LSM-Tree)"""
 
-    def __init__(self, db_folder="sst_files_db", capacity=50, sparsity_index=10):
+    def __init__(self, db_folder="lsm_db", capacity=50, sparsity_index=10):
         self.db_folder = Path(db_folder)  # convert to Path object
         self.capacity = capacity
         self.sparsity_index = sparsity_index

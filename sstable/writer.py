@@ -1,6 +1,6 @@
 import pickle
 
-from ..bloom_filter import BloomFilter
+from bloom_filter import BloomFilter
 
 
 class SSTableWriter:

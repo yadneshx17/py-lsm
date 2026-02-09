@@ -1,8 +1,6 @@
 import bisect
 import pickle
 
-from ..memtable import MemTable
-
 
 class SSTableReader:
     def __init__(self, db_path, index_path):
@@ -35,7 +33,7 @@ class SSTableReader:
         # in the index. If i is 0, we start from the beginning of the file.
         start_offset = self.sparse_index[i - 1][1] if i > 0 else 0
 
-        with open(self.data_path, "r", encoding="utf-8") as f:
+        with open(self.db_path, "r", encoding="utf-8") as f:
             f.seek(start_offset)
             for line in f:
                 line_key, line_val = line.rstrip("\n").split("\t", 1)
