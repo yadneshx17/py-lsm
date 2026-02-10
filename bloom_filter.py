@@ -13,6 +13,7 @@ class BloomFilter:
 
     def _get_size(self, n, p):
         """Returns number of bits require for key-value pairs"""
+        # minus sign ahead because: ln(p) -> negative, for 0 < p < 1 ; p is 0.01 here
         return int(-(n * math.log(p)) / (math.log(2) ** 2))
 
     def _get_hash_count(self, m, n):

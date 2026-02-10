@@ -22,7 +22,7 @@ class MemTable:
 
     def clear(self):
         """Clears the Memtable"""
-        self.data = {}
+        self._data = {} 
 
     def get_sorted_items(self):
         """Returns all the k-v pairs sorted by key. O(n log n)."""
