@@ -6,6 +6,10 @@ A Toy implementation of **LSM-tree** (Log-Structured Merge-Tree) - a high-perfor
 
 ![LSM-tree Architecture](./assets/lsm.png)
 
+## Performance Benchmarks
+
+![Performance Benchmarks](./assets/performance_benchmarks.png)
+
 ### Write Path
 1. **WAL Write**: Key-value pair written to Write-Ahead Log (durability)
 2. **MemTable Insert**: Data stored in in-memory sorted structure
