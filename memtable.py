@@ -4,8 +4,10 @@ class MemTable:
     Sorting happens at flush time O(n log n).
 
     Another Approach:
-        bisect + list for O(n) writes and O(log n) for reads,
+        1. bisect + list for O(n) writes and O(log n) for reads,
         O(1) for flush.
+        
+        2. Skiplist
     """
 
     def __init__(self):

@@ -14,8 +14,8 @@ class SSTableReader:
                     bloom_bytes = f.read()
                     self.bloom_filter = pickle.loads(bloom_bytes)
                     break
-                    key, offset = line.decode("utf-8").rstrip("\n").split("\t", 1)
-                    self.sparse_index.append((key, int(offset)))
+                key, offset = line.decode("utf-8").rstrip("\n").split("\t", 1)
+                self.sparse_index.append((key, int(offset)))
 
     def get(self, key):
         if self.bloom_filter.not_contains(key):

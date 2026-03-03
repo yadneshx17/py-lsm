@@ -8,11 +8,14 @@ class BloomFilter:
         self.error_rate = error_rate
 
         self.size = self._get_size(capacity, error_rate)
+        
+        # multiple hash counts reduce the false positive by requiring multiple bits per key 
         self.hash_count = self._get_hash_count(self.size, capacity)
         self.bit_array = 0
 
     def _get_size(self, n, p):
         """Returns number of bits require for key-value pairs"""
+        # n -> the numnber of k-v pairs 
         # minus sign ahead because: ln(p) -> negative, for 0 < p < 1 ; p is 0.01 here
         return int(-(n * math.log(p)) / (math.log(2) ** 2))
 

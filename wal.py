@@ -18,8 +18,8 @@ class WAL:
     - DELETE: value_len = 0 (tombstone)
     """
 
-    HEADER_FORMAT = ">III" 
-    # 8 bytes
+    HEADER_FORMAT = ">III"
+    # 12 bytes
     # Returns the size in bytes of the struct defined by the format string "HEADER_FORMAT"
     HEADER_SIZE = struct.calcsize(HEADER_FORMAT) 
 
@@ -45,7 +45,7 @@ class WAL:
         # pack header: key_len, value_len
         header = struct.pack(self.HEADER_FORMAT, len(key_bytes), len(value_bytes), len(checksum_bytes))
     
-        # write header + key + value + checksum
+        # writes     header + key + value + checksum
         record = header + key_bytes + value_bytes + checksum_bytes
         self._file.write(record)
 

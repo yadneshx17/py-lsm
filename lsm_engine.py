@@ -1,18 +1,16 @@
-# Orchestrates
-
 import os
 import time
 from pathlib import Path
 
 from sortedcontainers import SortedDict
 
-from sstable.writer import SSTableWriter
-
-from wal import WAL
 from memtable import MemTable
 from sstable import SSTableReader
+from sstable.writer import SSTableWriter
+from wal import WAL
 
 
+# orchestrator of the whole LSM-Tree
 class LSMEngine:
     """A simple implementation of Log-Structured Merge-Tree (LSM-Tree)"""
 
@@ -41,11 +39,11 @@ class LSMEngine:
 
     def set(self, key, value):
         """Sets a key-value pair in the memtable with WAL for durability or flushes if full."""
-        # write to wal first
+        # write to wal first - ensures durability
         self.wal.append(key, value)
-        
+
         # then write to memtable
-        self.memtable.set(key, value)
+        self.memtable.set(key, value)   
 
         # flush if capacity is reached
         if len(self.memtable) >= self.capacity:
@@ -98,6 +96,6 @@ class LSMEngine:
             if value is not None:
                 self.memtable.set(key, value)
             #  else: handle deletes ( tombstones )
-        
+
         if entries:
             print(f"Recovered {len(entries)} entries from WAL")

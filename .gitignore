@@ -1,0 +1,8 @@
+venv
+
+*.pyc
+
+lsm_db
+test_sstable_dir
+test_wal
+wal_dir

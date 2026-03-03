@@ -15,7 +15,6 @@ Commands:
 """
 
 import sys
-import readline  # enables arrow keys and command history
 from pathlib import Path
 
 # Add project to path

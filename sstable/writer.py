@@ -29,7 +29,7 @@ class SSTableWriter:
         Writes the key-value pairs to the data file and generates the
         sparse index.
         """
-        
+
         with (
             open(self.data_path, "w", encoding="utf-8") as data_f,
             open(self.index_path, "wb") as index_f,
